@@ -16,7 +16,16 @@ fi
 
 rm -rf ./gql-dg-tmp;
 
-
+#Create db
+sudo service postgresql start
+sudo -u postgres psql
+CREATE DATABASE bestwishesdb;
+CREATE USER happuser WITH ENCRYPTED PASSWORD 'newypass';
+ALTER ROLE happuser SET client_encoding TO 'utf8';
+ALTER ROLE happuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE happuser SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO happuser;
+\q
 
 # Run the tests present inside generate project
 python3 -m venv venv
