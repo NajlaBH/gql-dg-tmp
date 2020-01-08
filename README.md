@@ -1,4 +1,4 @@
-# Gqt-dg-tmp
+# Gql-dg-tmp
 Template project for django - GraphQL CI/CD app.
 
 [![Build Status](https://travis-ci.org/NajlaBH/gql-dg-tmp.svg?branch=master)](https://travis-ci.org/NajlaBH/gql-dg-tmp)

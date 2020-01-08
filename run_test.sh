@@ -6,7 +6,7 @@ trap 'err=1' ERR
 
 # Clean
 if psql -lqt | cut -d \| -f 1 | grep -qw bestwishesdb ; then
-    read -p "Database 'best_wishes' required for running the tests already exist. Do you want to delete it (y)?" yn
+    read -p "Database 'bestwishesdb' required for running the tests already exist. Do you want to delete it (y)?" yn
     if echo "$yn" | grep -iq "^n" ;then
         exit
     else
@@ -16,7 +16,7 @@ fi
 
 rm -rf ./gql-dg-tmp;
 
-#Create db
+#Create db demo-credits for travis
 psql -c "CREATE DATABASE bestwishesdb;"
 psql -c "CREATE USER happuser WITH ENCRYPTED PASSWORD 'newypass';"
 psql -c "ALTER ROLE happuser SET client_encoding TO 'utf8';"
