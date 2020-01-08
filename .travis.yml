@@ -1,0 +1,39 @@
+language: python
+dist: buster
+
+python:
+  - '3.8.1'
+
+node_js:
+  - "12.14.1"
+
+cache:
+  pip: true
+  directories:
+  - node_modules # NPM packages
+
+services:
+  - docker
+
+env:
+  global:
+  - PGHOST=localhost
+  - PGUSER=postgres
+  - PGPORT=5432
+
+before_install:
+  - sudo service postgresql stop
+  - docker pull postgres:12.1
+  - docker run --rm --name pg-docker -d -p ${PGPORT}:5432 --tmpfs /var/lib/postgresql/data:rw postgres:12
+  - docker ps
+
+install:
+  - pip install cookiecutter==1.7.0
+
+script:
+  - ./run_test.sh
+
+notifications:
+  email:
+    on_success: change  # [always|never|change]
+    on_failure: always  # [always|never|change]
