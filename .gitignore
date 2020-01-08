@@ -5,8 +5,8 @@
 
 # Icon must ends with two \r.
 Icon
-
-
+.env
+venv/
 # Thumbnails
 ._*
 

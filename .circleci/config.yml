@@ -1,17 +1,17 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/gst-dg-tmp
+    working_directory: ~/gql-dg-tmp
     environment:
       TEST_RESULTS: /tmp/test-results
     docker:
       - image: circleci/python:3.8.1
         environment:
-          DATABASE_URL: postgresql://root@localhost/best_wishes?sslmode=disable
+                DATABASE_URL: postgresql://happuser:newypass@localhost/bestwishesdb?sslmode=disable
       - image: circleci/postgres:12.1
         environment:
-          POSTGRES_USER: root
-          POSTGRES_DB: best_wishes
+          POSTGRES_USER: happuser
+          POSTGRES_DB: bestwishesdb
     steps:
       - checkout  # Get the latest clone of the repo in CI.
       - run:
@@ -61,9 +61,7 @@ jobs:
             virtualenv venv
             source venv/bin/activate
             pip install --upgrade pip
-            pip install cookiecutter
-            pip install requirements.txt
-            pip install -U pip cookiecutter ansible==2.5.0 fabric3==1.14.post1
+            pip install -r requirements.txt
       - run:
           name: Run tests
           command: |

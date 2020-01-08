@@ -1,8 +1,8 @@
 # Gqt-dg-tmp
-Template project for django - GraphQT CI/CD app.
+Template project for django - GraphQL CI/CD app.
 
 ### Getting Started
-cookiecutter gh:NajlaBH/gqt-dg-tmp
+git clone NajlaBH/gql-dg-tmp.git
 
 
 ### Authors 
