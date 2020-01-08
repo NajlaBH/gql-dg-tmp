@@ -18,7 +18,7 @@ services:
 env:
   global:
   - PGHOST=localhost
-  - PGUSER=postgres
+  - PGUSER=happuser
   - PGPORT=5432
 
 before_install:
