@@ -24,14 +24,14 @@ jobs:
           command: |
             wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
             # Activate nvm
-            export NVM_DIR=$HOME/.nvm
-            touch $HOME/.nvmrc
-            source $NVM_DIR/nvm.sh
+            #export NVM_DIR=$HOME/.nvm
+            #touch $HOME/.nvmrc
+            #source $NVM_DIR/nvm.sh
             # Use node 12.14.1
             nvm install 12.14.1 && nvm alias default 12.14.1
-            echo 12.14.1 > $HOME/.nvmrc
+            #echo 12.14.1 > $HOME/.nvmrc
             #echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
-            echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
+            #echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
             # To fix npm install : "node-pre-gyp: Permission denied"
             npm config set user 0
             npm config set unsafe-perm true
