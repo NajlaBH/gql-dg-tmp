@@ -22,32 +22,13 @@ jobs:
       - run:
           name: Setup nvm and npm
           command: |
-            wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
-            # Activate nvm
-            echo 'STEP:1- SET ENV'
-            export NVM_DIR=$HOME/.nvm
-            touch $HOME/.nvmrc
-
-            echo 'STEP:2- SOURCE script nvm'
-            source $NVM_DIR/nvm.sh
-
-            #echo 'STEP:3 REMOVE BUILD FAIL LINKS'
-            #Fix build fail :: EEXIST: file already exists, symlink '../lib/node_modules/npx/index.js'
-            #rm ../lib/node_modules/npx/index.js #unexistant link for now
-            #rm /home/circleci/.nvm/versions/node/v12.14.1/bin/npx
-            
-            
-            echo 'STEP:3 FINISH NVM INSTALL'
-            # Use node 12.14.1
-            nvm install 12.14.1 --force #&& nvm alias default 12.14.1
-            
-            echo 12.14.1 > $HOME/.nvmrc
-            echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
-            echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
-            echo 12.14.1 > $HOME/.nvmrc
-            echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
-            echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
-            
+            set +e
+            # if you need to install it, uncomment the following
+            # wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash &&  sudo /opt/circleci/.nvm/nvm.sh
+            export NVM_DIR="/opt/circleci/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm install v13            
+            npm install -g yarn 
             # To fix npm install : "node-pre-gyp: Permission denied"
             npm config set user 0
             npm config set unsafe-perm true
