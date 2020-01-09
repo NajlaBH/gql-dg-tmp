@@ -24,9 +24,6 @@ psql -c "ALTER ROLE happuser SET default_transaction_isolation TO 'read committe
 psql -c "ALTER ROLE happuser SET timezone TO 'UTC';"
 psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO happuser;"
 
-# RESTART SERVER
-sudo service postgresql start
-
 # Run the tests present inside generate project
 python3 -m venv venv
 source venv/bin/activate
