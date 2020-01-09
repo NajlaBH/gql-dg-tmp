@@ -24,11 +24,11 @@ psql -c "ALTER ROLE root SET default_transaction_isolation TO 'read committed';"
 psql -c "ALTER ROLE root SET timezone TO 'UTC';"
 psql -c "GRANT ALL PRIVILEGES ON DATABASE circle_test TO root;"
 #CircleCi user grant
-psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
-psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
-psql -c "ALTER ROLE circleci SET default_transaction_isolation TO 'read committed';"
-psql -c "ALTER ROLE circleci SET timezone TO 'UTC';"
-psql -c "GRANT ALL PRIVILEGES ON DATABASE circle_test TO circleci;"
+#psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
+#psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
+#psql -c "ALTER ROLE circleci SET default_transaction_isolation TO 'read committed';"
+#psql -c "ALTER ROLE circleci SET timezone TO 'UTC';"
+#psql -c "GRANT ALL PRIVILEGES ON DATABASE circle_test TO circleci;"
 
 # Run the tests present inside generate project
 python3 -m venv venv
