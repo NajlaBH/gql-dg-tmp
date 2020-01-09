@@ -44,7 +44,6 @@ jobs:
           name: Update apt source list for Postgres
           command: |
             sudo apt update
-            sudo apt-get install -y postgresql-12 postgresql-contrib-12
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
             sudo apt-get update && sudo apt-get upgrade -y 
             pg_ctlcluster 12 main start
