@@ -40,11 +40,6 @@ jobs:
             node --version
             npm --version
       - run:
-          name: Update apt source list for Postgres
-          command: |
-            docker run --rm --name pg-docker -d -p 5432:5432 --tmpfs /var/lib/postgresql/data:rw postgres:12
-            docker ps
-      - run:
           name: Waiting for Postgres to be ready
           command: |
             for i in `seq 1 10`;
