@@ -12,6 +12,7 @@ jobs:
         environment:
           POSTGRES_USER: happuser
           POSTGRES_DB: bestwishesdb
+      - image: circleci/node:dubnium-buster-browsers-legacy
     steps:
       - checkout  # Get the latest clone of the repo in CI.
       - run:
@@ -20,29 +21,11 @@ jobs:
             mkdir -p $TEST_RESULTS
             sudo chown -R circleci:circleci /usr/local/bin
       - run:
-          name: Setup nvm and npm
-          command: |
-            set +e
-            touch $BASH_ENV
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
-            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            #echo 'nvm install v12.14.2' >> $BASH_ENV
-            #echo 'nvm alias default v12.14.2' >> $BASH_ENV
-      - run: |
-            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-      - run: |
-            node -v
-      - run: |
-            nvm install v12.14.2
-            node -v
-            nvm alias default v12.14.2
-      - run: |
+          name: Test npm install
             # To fix npm install : "node-pre-gyp: Permission denied"
-            npm config set user 0
-            npm config set unsafe-perm true
-            npm install -g npx webpack webpack-cli jest npm
+            #npm config set user 0
+            #npm config set unsafe-perm true
+            #npm install -g npx webpack webpack-cli jest npm
             node --version
             npm --version
       - run:
