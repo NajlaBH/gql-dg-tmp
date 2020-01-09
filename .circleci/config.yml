@@ -30,8 +30,7 @@ jobs:
             # Use node 12.14.1
             nvm install 12.14.1 && nvm alias default 12.14.1
             echo 12.14.1 > $HOME/.nvmrc
-            rm /home/circleci/.nvm/versions/node/v12.14.1/bin/npx
-            echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
+            #echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
             echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
             # To fix npm install : "node-pre-gyp: Permission denied"
             npm config set user 0
