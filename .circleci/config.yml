@@ -80,6 +80,7 @@ jobs:
           command: |
             virtualenv venv
             source venv/bin/activate
+            psql -c "CREATE ROLE circleci LOGIN PASSWORD 'circleci' NOINHERIT CREATEDB VALID UNTIL 'infinity';"
             pip install --upgrade pip
             pip install -r requirements.txt
       - run:
