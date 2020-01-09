@@ -7,10 +7,10 @@ jobs:
     docker:
       - image: circleci/python:3.8.1
         environment:
-                DATABASE_URL: postgresql://circleci:circleci@localhost/bestwishesdb?sslmode=disable
+                DATABASE_URL: postgresql://happuser:newypass@localhost/bestwishesdb?sslmode=disable
       - image: circleci/postgres:12.1
         environment:
-          POSTGRES_USER: circleci
+          POSTGRES_USER: happuser
           POSTGRES_DB: bestwishesdb
       - image: circleci/node:buster
 
@@ -20,7 +20,8 @@ jobs:
           name: Set-up test_results directory and set-up permissions
           command: |
             mkdir -p $TEST_RESULTS
-            sudo chown -R circleci:circleci /usr/local/bin
+            #sudo chown -R circleci:circleci /usr/local/bin
+            sudo chown -R happuser:happuser /usr/local/bin
       - run:
           name: "Update Node.js and npm"
           command: |
