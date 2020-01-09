@@ -29,15 +29,12 @@ jobs:
             #source $NVM_DIR/nvm.sh
             # Use node 12.14.1
             nvm install 12.14.1 && nvm alias default 12.14.1
-<<<<<<< HEAD
             #echo 12.14.1 > $HOME/.nvmrc
             #echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
             #echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
-=======
-            echo 12.14.1 > $HOME/.nvmrc
+            #echo 12.14.1 > $HOME/.nvmrc
             #echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
-            echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
->>>>>>> 294eae76b98c1f8f9775c31ad6be5708e9befe99
+            #echo 'source $NVM_DIR/nvm.sh' >> $BASH_ENV
             # To fix npm install : "node-pre-gyp: Permission denied"
             npm config set user 0
             npm config set unsafe-perm true
