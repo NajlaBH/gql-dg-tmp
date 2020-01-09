@@ -52,6 +52,9 @@ jobs:
             #echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
             sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" > /etc/apt/sources.list.d/PostgreSQL.list'
             sudo apt update
+            sudo rm /var/lib/apt/lists/partial/*
+            sudo apt-get update && sudo apt-get upgrade
+            sudo apt clean
             sudo apt -y install postgresql-12 postgresql-client-12
             sudo apt-get install -y python-psycopg2
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
