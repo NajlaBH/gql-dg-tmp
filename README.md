@@ -8,7 +8,7 @@ Template project for django - GraphQL CI/CD app.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Getting Started
-https://bitbucket.org/NajlaBHbi/gql-dg-tmp
+https://github.com/NajlaBH/gql-dg-tmp.git
 
 
 ### Authors 
@@ -20,6 +20,7 @@ NajlaBH
 * https://circleci.com/docs/2.0/language-python/
 * https://circleci.com/docs/2.0/workflows/
 * https://graphene-python.org/
+* https://docs.graphene-python.org/projects/django/en/latest/tutorial-plain/
 
 ### LICENSE
 MIT
