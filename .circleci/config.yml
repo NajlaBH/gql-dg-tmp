@@ -57,7 +57,7 @@ jobs:
             sudo apt-get clean
             # stand by until update LL 3JAN20 :: error postgresql-12 : Depends: libicu60 (>= 60.1-1~) but it is not installable
             #sudo apt -y install postgresql-12 postgresql-client-12
-            sudo apt-get install postgresql-12 postgresql-client-12
+            sudo apt-get install postgresql postgresql-client
             sudo apt-get install -y python-psycopg2
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
             sudo apt-get update && sudo apt-get upgrade -y
