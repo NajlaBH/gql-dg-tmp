@@ -76,8 +76,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bestwishesdb',
-        'USER': 'happuser',
-        'PASSWORD': 'newypass',
+        'USER': 'circleci',
+        'PASSWORD': 'circleci',
         'HOST': 'localhost',
         'PORT': '5432',
     }
