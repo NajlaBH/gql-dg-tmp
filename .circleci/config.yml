@@ -52,7 +52,7 @@ jobs:
             sudo apt-get update && sudo apt-get install -y postgresql-client-12
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
             sudo apt-get update && sudo apt-get upgrade -y 
-            sudo apt-get update && sudo apt-get install -y postgresql postgresql-contrib python-psycopg2 
+            sudo apt-get update && sudo apt-get install -y postgresql-12 postgresql-contrib-12 python-psycopg2 
             sudo service postgresql start
       - run:
           name: Waiting for Postgres to be ready
