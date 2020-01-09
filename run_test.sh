@@ -18,11 +18,11 @@ rm -rf ./gql-dg-tmp;
 
 #Create db demo-credits for travis
 psql -c "CREATE DATABASE bestwishesdb;"
-psql -c "CREATE USER happuser WITH ENCRYPTED PASSWORD 'newypass';"
-psql -c "ALTER ROLE happuser SET client_encoding TO 'utf8';"
-psql -c "ALTER ROLE happuser SET default_transaction_isolation TO 'read committed';"
-psql -c "ALTER ROLE happuser SET timezone TO 'UTC';"
-psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO happuser;"
+#psql -c "CREATE USER happuser WITH ENCRYPTED PASSWORD 'newypass';"
+#psql -c "ALTER ROLE happuser SET client_encoding TO 'utf8';"
+#psql -c "ALTER ROLE happuser SET default_transaction_isolation TO 'read committed';"
+#psql -c "ALTER ROLE happuser SET timezone TO 'UTC';"
+#psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO happuser;"
 #CircleCi user grant
 psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
 psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
