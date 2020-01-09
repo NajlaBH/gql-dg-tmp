@@ -39,7 +39,7 @@ jobs:
             #useradd -m circleci
             #npm set unsafe-perm true
             npm set prefix=/home/circleci/npm && echo 'export PATH=$HOME/circleci/npm/bin:$PATH' >> /home/circleci/.bashrc
-            npm install -g --loglevel=warn npx webpack webpack-cli jest npm
+            npm install -g --loglevel=warn npx webpack webpack-cli jest
             #npm install -g npx webpack webpack-cli jest npm
             node --version
             npm --version
