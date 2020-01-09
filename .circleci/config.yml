@@ -10,7 +10,7 @@ jobs:
                 DATABASE_URL: postgresql://happuser:newypass@localhost/bestwishesdb?sslmode=disable
       - image: circleci/postgres:12.1
         environment:
-          POSTGRES_USER: happuser
+          POSTGRES_USER: circleci
           POSTGRES_DB: bestwishesdb
       - image: circleci/node:buster
 
@@ -44,16 +44,17 @@ jobs:
           name: Update apt source list for Postgres
           command: |
             sudo apt update
-            sudo apt-get install -y postgresql postgresql-contrib
+            sudo apt-get install -y postgresql-12 postgresql-contrib-12
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
             sudo apt-get update && sudo apt-get upgrade -y 
-            sudo service postgresql start
-            psql -c "CREATE DATABASE bestwishesdb;"
-            psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
-            psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
-            psql -c "ALTER ROLE circleci SET default_transaction_isolation TO 'read committed';"
-            psql -c "ALTER ROLE circleci SET timezone TO 'UTC';"
-            psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO circleci;"
+            pg_ctlcluster 12 main start
+            #sudo service postgresql start
+            #psql -c "CREATE DATABASE bestwishesdb;"
+            #psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
+            #psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
+            #psql -c "ALTER ROLE circleci SET default_transaction_isolation TO 'read committed';"
+            #psql -c "ALTER ROLE circleci SET timezone TO 'UTC';"
+            #psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO circleci;"
       - run:
           name: Waiting for Postgres to be ready
           command: |
