@@ -13,6 +13,7 @@ jobs:
           POSTGRES_USER: happuser
           POSTGRES_DB: bestwishesdb
       - image: circleci/node:dubnium-buster-browsers-legacy
+
     steps:
       - checkout  # Get the latest clone of the repo in CI.
       - run:
@@ -22,7 +23,7 @@ jobs:
             sudo chown -R circleci:circleci /usr/local/bin
       - run:
           name: Test npm install
-          commnd: |
+          command: |
             # To fix npm install : "node-pre-gyp: Permission denied"
             #npm config set user 0
             #npm config set unsafe-perm true
