@@ -24,7 +24,7 @@ jobs:
           command: |
             set +e
             # if you need to install it, uncomment the following
-            # wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash &&  sudo /opt/circleci/.nvm/nvm.sh
+            wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash &&  sudo /opt/circleci/.nvm/nvm.sh
             export NVM_DIR="/opt/circleci/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm install v13            
