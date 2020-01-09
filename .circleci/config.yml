@@ -50,6 +50,8 @@ jobs:
             sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" > /etc/apt/sources.list.d/PostgreSQL.list'
             sudo apt update
             sudo apt-get update && sudo apt-get install -y postgresql-client-12
+            sudo apt-get update && apt-get install -y --no-install-recommends apt-utils
+            sudo apt-get install -y postgresql postgresql-contrib python-psycopg2 
             sudo service postgresql start
       - run:
           name: Waiting for Postgres to be ready
