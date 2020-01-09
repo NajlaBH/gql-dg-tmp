@@ -30,12 +30,24 @@ jobs:
           name: Check current version of node
           command: node -v
       - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install npm wee
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run:
           name: Test npm install
           command: |
             # To fix npm install : "node-pre-gyp: Permission denied"
-            #npm config set user 0
-            #npm config set unsafe-perm true
-            #npm install -g npx webpack webpack-cli jest npm
+            npm config set user 0
+            npm config set unsafe-perm true
+            npm install -g npx webpack webpack-cli jest npm
             node --version
             npm --version
       - run:
@@ -66,6 +78,7 @@ jobs:
           name: Run tests
           command: |
             source venv/bin/activate
+            sudo service postgresql start
             ./run_test.sh
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
