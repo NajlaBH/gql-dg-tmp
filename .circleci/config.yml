@@ -7,11 +7,11 @@ jobs:
     docker:
       - image: circleci/python:3.8.1
         environment:
-                DATABASE_URL: postgresql://circleci:circleci@localhost/bestwishesdb?sslmode=disable
+                DATABASE_URL: postgresql://circleci@localhost/bestwishesdb?sslmode=disable
       - image: circleci/postgres:12.1
         environment:
           POSTGRES_USER: circleci
-          POSTGRES_PASSWORD: circleci
+          POSTGRES_PASSWORD: "circleci"
           POSTGRES_DB: bestwishesdb
       - image: circleci/node:buster
 
@@ -64,7 +64,7 @@ jobs:
             sudo apt-get update && sudo apt-get upgrade -y
             sudo service postgresql start
             #systemctl status postgresql.service
-            psql -c "CREATE ROLE circleci LOGIN PASSWORD 'circleci' NOINHERIT CREATEDB VALID UNTIL 'infinity';"
+            #psql -c "CREATE ROLE circleci LOGIN PASSWORD 'circleci' NOINHERIT CREATEDB VALID UNTIL 'infinity';"
       - run:
           name: Waiting for Postgres to be ready
           command: |
