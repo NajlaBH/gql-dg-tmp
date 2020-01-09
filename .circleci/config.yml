@@ -54,18 +54,14 @@ jobs:
           command: |
             virtualenv venv
             source venv/bin/activate
-            sudo apt-get update
-            sudo apt-get install -y postgresql postgresql-contrib
-            sudo apt-get upgrade
-            sudo apt-get update
-            sudo service postgresql start
             pip install --upgrade pip
             pip install -r requirements.txt
       - run:
           name: Run tests
           command: |
             source venv/bin/activate
-            ./run_test.sh
+            python manage migrate
+            python manage test
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results
       - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
