@@ -75,9 +75,9 @@ WSGI_APPLICATION = 'gql_dg_tmp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bestwishesdb',
-        'USER': 'circleci',
-        'PASSWORD': 'circleci',
+        'NAME': 'circle_test',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
     }
