@@ -40,7 +40,7 @@ jobs:
           name: Test npm install
           command: |
             #fix -g install permission
-            useradd -m circleci
+            #useradd -m circleci
             npm set unsafe-perm true
             npm install -g npx webpack webpack-cli jest npm
             node --version
