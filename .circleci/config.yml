@@ -31,15 +31,15 @@ jobs:
             echo 'STEP:2- SOURCE script nvm'
             source $NVM_DIR/nvm.sh
 
-            echo 'STEP:3 REMOVE BUILD FAIL LINKS'
+            #echo 'STEP:3 REMOVE BUILD FAIL LINKS'
             #Fix build fail :: EEXIST: file already exists, symlink '../lib/node_modules/npx/index.js'
             #rm ../lib/node_modules/npx/index.js #unexistant link for now
-            rm /home/circleci/.nvm/versions/node/v12.14.1/bin/npx
+            #rm /home/circleci/.nvm/versions/node/v12.14.1/bin/npx
             
             
-            echo 'STEP:4 FINISH NVM INSTALL'
+            echo 'STEP:3 FINISH NVM INSTALL'
             # Use node 12.14.1
-            nvm install 12.14.1 && nvm alias default 12.14.1
+            nvm install 12.14.1 #&& nvm alias default 12.14.1
             
             echo 12.14.1 > $HOME/.nvmrc
             echo 'export NVM_DIR=$HOME/.nvm' >> $BASH_ENV
