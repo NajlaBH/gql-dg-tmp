@@ -12,7 +12,7 @@ jobs:
         environment:
           POSTGRES_USER: happuser
           POSTGRES_DB: bestwishesdb
-      - image: circleci/node:dubnium-buster-browsers-legacy
+      - image: circleci/node:buster
 
     steps:
       - checkout  # Get the latest clone of the repo in CI.
@@ -21,6 +21,14 @@ jobs:
           command: |
             mkdir -p $TEST_RESULTS
             sudo chown -R circleci:circleci /usr/local/bin
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v12.14.1/node-v12.14.1-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v12.14.1-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: Check current version of node
+          command: node -v
       - run:
           name: Test npm install
           command: |
