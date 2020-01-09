@@ -22,6 +22,7 @@ jobs:
             sudo chown -R circleci:circleci /usr/local/bin
       - run:
           name: Test npm install
+          commnd: |
             # To fix npm install : "node-pre-gyp: Permission denied"
             #npm config set user 0
             #npm config set unsafe-perm true
