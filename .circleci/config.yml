@@ -32,17 +32,15 @@ jobs:
       - run:
           name: Update npm
           command: 'sudo npm install -g npm@latest'
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
       - run:
           name: Test npm install
           command: |
             #fix -g install permission
             #useradd -m circleci
-            npm set unsafe-perm true
-            npm install -g npx webpack webpack-cli jest npm
+            #npm set unsafe-perm true
+            npm set prefix=/home/circleci/npm && echo 'export PATH=$HOME/circleci/npm/bin:$PATH' >> /home/circleci/.bashrc
+            npm install -g --loglevel=warn npx webpack webpack-cli jest npm
+            #npm install -g npx webpack webpack-cli jest npm
             node --version
             npm --version
       - run:
