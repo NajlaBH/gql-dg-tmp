@@ -23,6 +23,12 @@ psql -c "ALTER ROLE happuser SET client_encoding TO 'utf8';"
 psql -c "ALTER ROLE happuser SET default_transaction_isolation TO 'read committed';"
 psql -c "ALTER ROLE happuser SET timezone TO 'UTC';"
 psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO happuser;"
+#CircleCi user grant
+psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
+psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
+psql -c "ALTER ROLE circleci SET default_transaction_isolation TO 'read committed';"
+psql -c "ALTER ROLE circleci SET timezone TO 'UTC';"
+psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO circleci;"
 
 # Run the tests present inside generate project
 python3 -m venv venv

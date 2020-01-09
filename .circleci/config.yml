@@ -36,24 +36,17 @@ jobs:
           name: Test npm install
           command: |
             #fix -g install permission
-            #useradd -m circleci
-            #npm set unsafe-perm true
             npm set prefix=/home/circleci/npm && echo 'export PATH=$HOME/circleci/npm/bin:$PATH' >> /home/circleci/.bashrc
             npm install -g --loglevel=warn npx webpack webpack-cli jest
-            #npm install -g npx webpack webpack-cli jest npm
             node --version
             npm --version
       - run:
           name: Update apt source list for Postgres
           command: |
-            #wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-            #sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" > /etc/apt/sources.list.d/PostgreSQL.list'
             sudo apt update
             sudo apt-get install -y postgresql postgresql-contrib
-            #sudo apt-get update && sudo apt-get install -y postgresql-client-12
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
             sudo apt-get update && sudo apt-get upgrade -y 
-            #sudo apt-get update && sudo apt-get install -y postgresql-12 postgresql-contrib-12 python-psycopg2 
             sudo service postgresql start
       - run:
           name: Waiting for Postgres to be ready
