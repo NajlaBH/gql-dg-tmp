@@ -43,10 +43,15 @@ jobs:
       - run:
           name: Update apt source list for Postgres
           command: |
+            wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+            sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+            sudo apt-get install -y postgresql postgresql-contrib
+            sudo apt-get install -y python-psycopg2
             sudo apt update
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
             sudo apt-get update && sudo apt-get upgrade -y
-            #sudo service postgresql start
+            sudo service postgresql start
+            sudo -u postgres createuser happuser
             #psql -c "CREATE DATABASE bestwishesdb;"
             #psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
             #psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
