@@ -48,6 +48,12 @@ jobs:
             sudo apt-get update && sudo apt-get install -y --no-install-recommends apt-utils
             sudo apt-get update && sudo apt-get upgrade -y 
             sudo service postgresql start
+            psql -c "CREATE DATABASE bestwishesdb;"
+            psql -c "CREATE USER circleci WITH ENCRYPTED PASSWORD 'circleci';"
+            psql -c "ALTER ROLE circleci SET client_encoding TO 'utf8';"
+            psql -c "ALTER ROLE circleci SET default_transaction_isolation TO 'read committed';"
+            psql -c "ALTER ROLE circleci SET timezone TO 'UTC';"
+            psql -c "GRANT ALL PRIVILEGES ON DATABASE bestwishesdb TO circleci;"
       - run:
           name: Waiting for Postgres to be ready
           command: |
